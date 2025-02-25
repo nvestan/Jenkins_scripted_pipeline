@@ -1,7 +1,7 @@
 node {
     environment {
-        GIT_REPO = 'https://${code}@github.com/nvestan/helm.git'  // Replace with your repo URL
-        GIT_BRANCH = 'main'  // Replace with the desired branch
+        GIT_REPO = 'https://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@github.com/nvestan/helm.git'  // Git repo URL
+        GIT_BRANCH = 'main'  
     }
     
     stage('Integrate Remote k8s with Jenkins') {
