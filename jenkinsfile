@@ -1,6 +1,6 @@
 node {
     environment {
-        GIT_REPO = 'https://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@github.com/nvestan/helm.git'  // Git repo URL
+        env.GIT_REPO = 'https://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@github.com/nvestan/helm.git'  // Git repo URL
         env.GIT_BRANCH = 'main'  
     }
     
