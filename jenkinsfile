@@ -1,0 +1,34 @@
+node {
+    environment {
+        GIT_REPO = 'https://${code}@github.com/nvestan/helm.git'  // Replace with your repo URL
+        GIT_BRANCH = 'main'  // Replace with the desired branch
+    }
+    
+    stage('Integrate Remote k8s with Jenkins') {
+        sh "mkdir -p ~/.kube"
+        withCredentials([file(credentialsId: 'kube', variable: 'FILE')]) {
+            sh 'cp $FILE ~/.kube/config'
+        }
+        sh "curl -LO 'https://dl.k8s.io/release/v1.32.2/bin/linux/amd64/kubectl'"
+        sh "chmod +x kubectl"
+        sh "./kubectl get nodes"
+        sh "./kubectl get pods"
+    }
+    
+    stage('Clone Repository') {
+        checkout([$class: 'GitSCM', 
+            branches: [[name: "*/${GIT_BRANCH}"]], 
+            userRemoteConfigs: [[url: GIT_REPO]]
+        ])
+    }
+    
+    stage('Install Helm') {
+        sh 'curl -LO "https://get.helm.sh/helm-v3.16.4-linux-amd64.tar.gz"'
+        sh 'tar -zxvf helm-*-linux-amd64.tar.gz'
+        sh 'cp linux-amd64/helm helm'
+        sh './helm version'
+        sh './helm list'
+        sh 'ls -al'
+        sh './helm install nginx nginx/ -n mamba --dry-run'
+    }
+}
