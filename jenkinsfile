@@ -1,7 +1,6 @@
 node {
     environment {
-        env.GIT_REPO = 'https://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@github.com/nvestan/helm.git'  // Git repo URL
-        env.GIT_BRANCH = 'main'  
+        env.URL = 'URL'  // Git repo URL 
     }
     
     stage('Integrate Remote k8s with Jenkins') {
@@ -14,13 +13,12 @@ node {
         sh "./kubectl get nodes"
         sh "./kubectl get pods"
     }
-    
-    stage('Clone Repository') {
-        checkout([$class: 'GitSCM', 
-            branches: [[name: "*/${GIT_BRANCH}"]], 
-            userRemoteConfigs: [[url: GIT_REPO]]
-        ])
-    }
+
+    stage ('Extract') {
+        dir('helm') {
+            git branch: 'main', changelog: false, credentialsId: GIT, url: 'URL'
+            }
+    }    
     
     stage('Install Helm') {
         sh 'curl -LO "https://get.helm.sh/helm-v3.16.4-linux-amd64.tar.gz"'
