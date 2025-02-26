@@ -13,14 +13,11 @@ node {
         sh "./kubectl get nodes"
         sh "./kubectl get pods"
     }
-    stage('Source') {
-        script{
-            git branch: 'main',
-                url: 'URL'
+    stage ('Extract') {
+            dir('helm') {
+                git branch: 'main', changelog: false, credentialsId: key, url: 'ssh://git@github.com/nvestan/helm.git''
         }
-        sh "ls -al"
     }
-    
     stage('Install Helm') {
         sh 'curl -LO "https://get.helm.sh/helm-v3.16.4-linux-amd64.tar.gz"'
         sh 'tar -zxvf helm-*-linux-amd64.tar.gz'
