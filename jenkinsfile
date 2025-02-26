@@ -1,7 +1,6 @@
 node {
     environment {
         env.URL = "URL"  // Git repo URL
-        env.GIT = "nvestan_secret"
     }
     
     stage('Integrate Remote k8s with Jenkins') {
@@ -14,13 +13,14 @@ node {
         sh "./kubectl get nodes"
         sh "./kubectl get pods"
     }
-
-    stage ('Extract') {
-        dir('helm') {
-            sh "echo $GIT"
-            git branch: 'main', changelog: false, credentialsId: GIT, url: 'URL'
-            }
-    }    
+    stage('Source') {
+        script{
+            git branch: 'main',
+                credentialsId: 'nvestan_secret',
+                url: 'URL'
+        }
+        sh "ls -al"
+    }
     
     stage('Install Helm') {
         sh 'curl -LO "https://get.helm.sh/helm-v3.16.4-linux-amd64.tar.gz"'
