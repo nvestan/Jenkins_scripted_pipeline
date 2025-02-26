@@ -16,7 +16,6 @@ node {
     stage('Source') {
         script{
             git branch: 'main',
-                credentialsId: 'nvestan_secret',
                 url: 'URL'
         }
         sh "ls -al"
