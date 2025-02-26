@@ -15,7 +15,7 @@ node {
     }
     stage ('Extract') {
             dir('helm') {
-                git branch: 'main', changelog: false, credentialsId: key, url: 'ssh://git@github.com/nvestan/helm.git''
+                git branch: 'main', changelog: false, credentialsId: key, url: 'ssh://git@github.com/nvestan/helm.git'
         }
     }
     stage('Install Helm') {
