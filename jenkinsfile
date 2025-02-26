@@ -17,6 +17,7 @@ node {
 
     stage ('Extract') {
         dir('helm') {
+            sh "echo $GIT"
             git branch: 'main', changelog: false, credentialsId: GIT, url: 'URL'
             }
     }    
