@@ -1,7 +1,7 @@
 node {
     environment {
         env.URL = "URL"  // Git repo URL
-        env.GIT = "GIT"
+        env.GIT = "nvestan_secret"
     }
     
     stage('Integrate Remote k8s with Jenkins') {
