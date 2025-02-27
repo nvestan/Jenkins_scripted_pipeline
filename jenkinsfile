@@ -27,7 +27,7 @@ node {
             sh """
                 eval \$(ssh-agent -s)
                 ssh-add \$SSH_KEY
-                git clone git@github.com:nvestan/helm.git
+                git clone git@github.com:nvestan/docker-react.git
             """
         }
     }
