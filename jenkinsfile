@@ -33,10 +33,11 @@ node {
                 ssh-keyscan github.com >> ~/.ssh/known_hosts
                 git clone git@github.com:nvestan/district16.git
                 ls -al district16
+                ls -al district16/
                 ls -al
-                git submodule add -b feature git@github.com:nvestan/docker-react.git district16/library0/
-                ls helm0/
-                ls -al helm0/library0/
+                git submodule add -b feature git@github.com:nvestan/docker-react.git district16/library/
+                ls district16/
+                ls -al district16/library/
             """
         }
     }
