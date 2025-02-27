@@ -1,5 +1,7 @@
 node {
-    
+    environment {
+        env.full_git = "git@" + $git_path
+    }
     stage('Integrate Remote k8s with Jenkins') {
         sh "rm -rf *"
         sh "mkdir -p ~/.kube"
@@ -28,7 +30,7 @@ node {
                 eval \$(ssh-agent -s)
                 ssh-add \$SSH_KEY
                 ssh-keyscan github.com >> ~/.ssh/known_hosts
-                git clone ${github_url}
+                git clone ${full_git}
                 ls -al district16
                 ls -al district16/
                 ls -al
