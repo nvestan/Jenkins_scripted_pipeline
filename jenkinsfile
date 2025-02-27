@@ -4,7 +4,7 @@ node {
     }
     
     stage('Integrate Remote k8s with Jenkins') {
-        sh "rm -f *"
+        sh "rm -rf *"
         sh "mkdir -p ~/.kube"
         withCredentials([file(credentialsId: 'kube', variable: 'FILE')]) {
             sh 'cp $FILE ~/.kube/config'
