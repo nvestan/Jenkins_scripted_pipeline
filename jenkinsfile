@@ -43,6 +43,20 @@ node {
         }
     }
     stage('Run Bash Script') {
-        sh 'chmod +x myscript.sh && ./myscript.sh'
+        sh '''
+            #!/bin/bash
+            function myfunc {
+            echo "This is an example of using a function"
+            }
+            count=1
+            while [ $count -le 3 ]
+            do
+            myfunc
+            count=$(( $count + 1 ))
+            done
+            echo "This is the end of the loop"
+            myfunc
+            echo "End of the script"
+        '''
     }
 }
