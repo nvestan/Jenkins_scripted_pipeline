@@ -21,7 +21,6 @@ node {
         sh './helm version'
         sh './helm list'
         sh 'ls -al'
-        sh './helm install nginx nginx/ -n mamba --dry-run'
     }
     stage('Clone GitHub Repo via SSH') {
         withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-key', keyFileVariable: 'SSH_KEY')]) {
