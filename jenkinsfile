@@ -30,7 +30,7 @@ node {
                 eval \$(ssh-agent -s)
                 ssh-add \$SSH_KEY
                 ssh-keyscan github.com >> ~/.ssh/known_hosts
-                git clone ${full_git}
+                git clone ${env.full_git}
                 ls -al district16
                 ls -al district16/
                 ls -al
