@@ -1,8 +1,4 @@
 node {
-    environment {
-        env.URL = "https://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@github.com/nvestan/helm.git"  // Git repo URL
-        env.github_url = ""
-    }
     
     stage('Integrate Remote k8s with Jenkins') {
         sh "rm -rf *"
