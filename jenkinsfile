@@ -35,6 +35,7 @@ node {
                 git clone git@github.com:nvestan/district16.git
                 ls -al district16
                 ls -al
+                cat .gitmodules
                 git submodule add -b feature git@github.com:nvestan/docker-react.git helm0/library0/
                 ls helm0/
                 ls -al helm0/library0/
