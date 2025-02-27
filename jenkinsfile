@@ -1,6 +1,7 @@
 node {
     environment {
         env.URL = "https://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@github.com/nvestan/helm.git"  // Git repo URL
+        env.github_url = ""
     }
     
     stage('Integrate Remote k8s with Jenkins') {
@@ -31,7 +32,7 @@ node {
                 eval \$(ssh-agent -s)
                 ssh-add \$SSH_KEY
                 ssh-keyscan github.com >> ~/.ssh/known_hosts
-                git clone git@github.com:nvestan/district16.git
+                git clone git@${github_url}
                 ls -al district16
                 ls -al district16/
                 ls -al
