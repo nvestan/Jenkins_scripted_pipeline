@@ -13,11 +13,7 @@ node {
         sh "./kubectl get nodes"
         sh "./kubectl get pods"
     }
-    stage ('Extract') {
-            dir('helm') {
-                git branch: 'main', changelog: false, credentialsId: key, url: 'ssh://git@github.com/nvestan/helm.git'
-        }
-    }
+
     stage('Install Helm') {
         sh 'curl -LO "https://get.helm.sh/helm-v3.16.4-linux-amd64.tar.gz"'
         sh 'tar -zxvf helm-*-linux-amd64.tar.gz'
@@ -26,5 +22,14 @@ node {
         sh './helm list'
         sh 'ls -al'
         sh './helm install nginx nginx/ -n mamba --dry-run'
+    }
+    stage('Clone GitHub Repo via SSH') {
+        withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-key', keyFileVariable: 'SSH_KEY')]) {
+            sh """
+                eval \$(ssh-agent -s)
+                ssh-add \$SSH_KEY
+                git clone git@github.com:nvestan/helm.git
+            """
+        }
     }
 }
