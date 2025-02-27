@@ -43,10 +43,11 @@ node {
         }
     }
     stage('Clone Repository') {
-        git branch: 'main'
-        checkout scm
+        git branch: 'main', credentialsId: 'github-ssh-key', url: 'ssh:git@github.com:nvestan/docker-react.git'
     }
     stage('Run Bash Script from workspace') {
+        sh "ls -al"
+        sh "pwd"
         sh "${env.WORKSPACE}/./myscript.sh"
     }
 }
