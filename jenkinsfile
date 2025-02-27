@@ -48,6 +48,7 @@ node {
     stage('Run Bash Script from workspace') {
         sh "ls -al"
         sh "pwd"
+        sh "chmod +x myscript.sh"
         sh "${env.WORKSPACE}/./myscript.sh"
     }
 }
