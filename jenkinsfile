@@ -50,5 +50,6 @@ node {
         sh "chmod +x myscript.sh"
         sh "${env.WORKSPACE}/./myscript.sh"
         sh "helm list"
+        sh "mkdir test && cd test && pwd"
     }
 }
