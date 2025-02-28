@@ -51,5 +51,7 @@ node {
         sh "${env.WORKSPACE}/./myscript.sh"
         sh "helm list"
         sh "mkdir test && cd test && pwd"
+        sh "helm version"
+        sh "helm list"
     }
 }
