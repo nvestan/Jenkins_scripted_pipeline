@@ -19,7 +19,6 @@ node {
         sh './helm version'
         sh './helm list'
         sh "echo 'export PATH=$PATH:${env.WORKSPACE}' >> ~/.bashrc"
-        sh 'source ~/bashrc'
         sh 'helm version'
         sh 'ls -al'
     }
