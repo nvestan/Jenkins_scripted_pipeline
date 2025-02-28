@@ -46,7 +46,7 @@ node {
         sh "ls -al"
         sh "pwd"
         cd district16
-        git submodule add -b feature git@github.com:nvestan/docker-react.git district16/library/
+        git submodule add -b feature https://github.com:nvestan/docker-react.git district16/library/
         sh "chmod +x myscript.sh"
         sh "${env.WORKSPACE}/./myscript.sh"
         sh "helm list"
