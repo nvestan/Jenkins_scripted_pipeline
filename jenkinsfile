@@ -18,7 +18,7 @@ node {
         sh 'cp linux-amd64/helm helm'
         sh './helm version'
         sh './helm list'
-        sh "echo 'export PATH=$PATH:$workdir' >> ~/.bashrc"
+        sh "echo 'export PATH=$PATH:${env.WORKSPACE}' >> ~/.bashrc"
         sh 'source ~/bashrc'
         sh 'helm version'
         sh 'ls -al'
