@@ -18,6 +18,9 @@ node {
         sh 'cp linux-amd64/helm helm'
         sh './helm version'
         sh './helm list'
+        sh "echo 'export PATH=$PATH:$workdir' >> ~/.bashrc"
+        sh 'source ~/bashrc'
+        sh 'helm version'
         sh 'ls -al'
     }
     stage('Clone GitHub Repo via SSH') {
