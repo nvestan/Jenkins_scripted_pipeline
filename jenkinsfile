@@ -49,7 +49,7 @@ node {
         sh "${env.WORKSPACE}/./myscript.sh"
     }
     environment {
-      PATH="${env.WORKSPACE}:${env.PATH}
+      PATH="${env.WORKSPACE}/:${env.PATH}
     }
     stage('helm') {
         sh """
