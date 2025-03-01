@@ -48,4 +48,9 @@ node {
         sh "chmod +x myscript.sh"
         sh "${env.WORKSPACE}/./myscript.sh"
     }
+    stage('helm') {
+        sh """
+          pwd
+        """
+    }
 }
