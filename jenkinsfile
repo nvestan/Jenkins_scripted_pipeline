@@ -18,7 +18,7 @@ node {
         sh 'cp linux-amd64/helm helm'
         sh './helm version'
         sh './helm list'
-        sh 'ls -al ${env.WORKSPACE}'
+
     }
     stage('Clone GitHub Repo via SSH') {
         withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-key', keyFileVariable: 'SSH_KEY')]) {
