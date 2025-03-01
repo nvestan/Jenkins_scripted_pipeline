@@ -51,6 +51,7 @@ node {
     stage('helm') {
         sh """
           pwd
+          ls -al ${env.WORKSPACE}
         """
     }
 }
