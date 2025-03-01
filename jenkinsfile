@@ -48,12 +48,14 @@ node {
         sh "chmod +x myscript.sh"
         sh "${env.WORKSPACE}/./myscript.sh"
     }
+    environment {
+      PATH="${env.WORKSPACE}:${env.PATH}
+    }
     stage('helm') {
         sh """
           pwd
           ls -al ${env.WORKSPACE}
-          export PATH="${env.WORKSPACE}:$PATH"
-          mkdir test && cd test && pwd && helm list
+         mkdir test && cd test && pwd && helm list
         """
     }
 }
