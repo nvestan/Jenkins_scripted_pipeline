@@ -55,7 +55,8 @@ node {
         sh """
           pwd
           ls -al ${env.WORKSPACE}
-         mkdir test && cd test && pwd && helm list
+          mkdir test && cd test && pwd && helm list
+          echo "PATH is: ${env.PATH}"
         """
     }
 }
