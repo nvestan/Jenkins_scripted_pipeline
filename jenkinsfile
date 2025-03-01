@@ -47,8 +47,5 @@ node {
         sh "pwd"
         sh "chmod +x myscript.sh"
         sh "${env.WORKSPACE}/./myscript.sh"
-        sh "helm list"
-        sh "helm version"
-        sh "helm list"
     }
 }
