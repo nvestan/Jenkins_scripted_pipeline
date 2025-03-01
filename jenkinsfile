@@ -53,6 +53,8 @@ node {
           pwd
           ls -al ${env.WORKSPACE}
           export PATH="${env.WORKSPACE}:$PATH"
+          mkdir test && cd test && pwd
+          helm
         """
     }
 }
