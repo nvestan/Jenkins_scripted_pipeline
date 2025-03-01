@@ -18,7 +18,6 @@ node {
         sh 'cp linux-amd64/helm helm'
         sh './helm version'
         sh './helm list'
-        sh "echo 'export PATH=$PATH:${env.WORKSPACE}' >> ~/.bashrc"
         sh 'ls -al ${env.WORKSPACE}'
     }
     stage('Clone GitHub Repo via SSH') {
@@ -49,7 +48,7 @@ node {
         sh "chmod +x myscript.sh"
         sh "${env.WORKSPACE}/./myscript.sh"
         sh "helm list"
-        sh "mkdir test && cd test && pwd"
+
         sh "helm version"
         sh "helm list"
     }
