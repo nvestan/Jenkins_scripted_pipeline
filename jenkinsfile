@@ -52,6 +52,7 @@ node {
         sh """
           pwd
           ls -al ${env.WORKSPACE}
+          export PATH="${env.WORKSPACE}:$PATH"
         """
     }
 }
